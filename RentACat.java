@@ -80,13 +80,13 @@ public class RentACat {
     
     public String listCats() {
     	ArrayList<String> _catlist = new ArrayList<String>();
-    	for(int i = 0; i < _cat.size(); i++){
-    		if(catAvailable(_cat.get(i).getId())){
-    			_catlist.append(cat.get(i));
+    	for(int i = 0; i < _cats.size(); i++){
+    		if(catAvailable(_cats.get(i).getId())){
+    			_catlist.add(_cats.get(i).getName());
     		}
 
     	}
-    	for(Cat c: _catlist){
+    	for(String c : _catlist){
     		System.out.println(c.toString());
     	}
     	// TODO
