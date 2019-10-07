@@ -74,6 +74,11 @@ public class Cat {
     	return _name;
     }
 
+    public String setName(String newName) {
+        _name = newName;
+        return _name;
+    }
+
     /**
      * Accessor for _id variable.  Returns the ID of this cat.
      * @return int ID of this cat
@@ -110,8 +115,4 @@ public class Cat {
     	}
     	return "ID " + _id + ". " + _name;
     }
-    
-
-    
-    
 }

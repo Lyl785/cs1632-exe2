@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.mockito.*;
+import static org.mockito.Mockito.*;
 
 public class RentACatTest {
 
@@ -25,6 +26,60 @@ public class RentACatTest {
 		// 2. CREATE ALL MOCK CAT OBJECTS YOU WILL BE USING IN YOUR TESTS
 		// 3. PERFORM ANY STUBBING REQUIRED FOR CAT METHODS YOU WILL BE CALLING	
 		// (NOTE: THE DEFAULT BEHAVIOR FOR NON-STUBBED METHODS IS A NO-OP WITH 0 RETURN VALUE)
+		_r = new RentACat();
+		_c1 = Mockito.mock(Cat.class);
+		_c2 = Mockito.mock(Cat.class);
+		_c3 = Mockito.mock(Cat.class);
+		_r._cats.add(_c1);
+		_r._cats.add(_c2);
+		_r._cats.add(_c3);
+	}
+
+	@Test
+	public void testReturnCat() {
+		when(_c1.getId()).thenReturn(1);
+		when(_c1.getRented()).thenReturn(true);
+
+		assertTrue(_r.returnCat(1));
+	}
+
+	@Test
+	public void testRentCat() {
+		when(_c1.getId()).thenReturn(1);
+		when(_c1.getRented()).thenReturn(false);
+		
+		assertTrue(_r.rentCat(1));
+	}
+
+	@Test
+	public void testListCats() {
+		when(_c1.getId()).thenReturn(1);
+		when(_c2.getId()).thenReturn(2);
+		when(_c3.getId()).thenReturn(3);
+		when(_c1.getRented()).thenReturn(false);
+		when(_c2.getRented()).thenReturn(false);
+		when(_c3.getRented()).thenReturn(false);
+		when(_c1.getName()).thenReturn("Kat");
+		when(_c2.getName()).thenReturn("Guy");
+		when(_c3.getName()).thenReturn("Jimmy");
+
+		assertEquals(_r.listCats(), "ID 1: Kat\nID 2: Guy\nID 3: Jimmy\n");
+	}
+
+	@Test
+	public void testCatExists() {
+		when(_c1.getId()).thenReturn(1);
+
+		assertTrue(_r.catExits(1));
+	}
+
+	@Test
+	public void testGetCat() {
+		when(_c1.getId()).thenReturn(1);
+		when(_c1.getName()).thenReturn("Jennyanydots");
+
+		Cat c = _r.getCat(1);
+		assertEquals(c.getName(), "Jennyanydots");
 	}
     
 	@After

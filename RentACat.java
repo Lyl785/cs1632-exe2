@@ -18,18 +18,14 @@ public class RentACat {
      */
     
     public boolean returnCat(int id) {
-
-    	// TODO
     	Cat c = getCat(id);
 
-    	if (c == null){
+    	if (c == null) {
     		return false;
-
-    	}else if (c.getRented()){
+    	} else if (c.getRented()) {
     		c.returnCat();
     		return true;
     	}
-    	
 
     	return false;
     }
@@ -48,21 +44,16 @@ public class RentACat {
 
     
     public boolean rentCat(int id) {
-    	// TODO
     	Cat c = getCat(id);
 
-    	if(c == null){
+    	if(c == null) {
     		return false;
-
-    	}else if(c.getRented()){
+    	} else if(c.getRented()) {
     		return false;
-    	} else{
-
+    	} else {
     		c.rentCat();
     		return true;
     	}
-
-    
     }
 
 
@@ -79,18 +70,20 @@ public class RentACat {
      */
     
     public String listCats() {
-    	ArrayList<String> _catlist = new ArrayList<String>();
-    	for(int i = 0; i < _cats.size(); i++){
-    		if(catAvailable(_cats.get(i).getId())){
-    			_catlist.add(_cats.get(i).getName());
+		StringBuilder catList = new StringBuilder();
+
+    	for(int i = 0; i < _cats.size(); i++) {
+    		if(catAvailable(_cats.get(i).getId())) {
+				catList.append("ID ");
+				catList.append(_cats.get(i).getId());
+				catList.append(": ");
+				catList.append(_cats.get(i).getName());
+				catList.append("\n");
     		}
 
-    	}
-    	for(String c : _catlist){
-    		System.out.println(c.toString());
-    	}
-    	// TODO
-    	return "WRITE CODE FOR THIS";
+		}
+		
+    	return catList.toString();
     }
 
     /**
@@ -103,17 +96,16 @@ public class RentACat {
      */
     
     public boolean catExists(int id) {
-    	// TODO
     	Cat c = getCat(id);
 
-    	if(c == null){
+    	if(c == null) {
     		return false;
-    	}else if (_cats.contains(c)){
+    	} else if(_cats.contains(c)) {
     		return true;
 
-    	}else{
+		}
+		
     	return false;
-    	}
     }
 
     /**
