@@ -119,7 +119,6 @@ public class RentACat {
      */
 
     public boolean catAvailable(int id) {
-    	
 		// null / zero-element check
 		if (_cats == null || _cats.size() == 0) {
 		    return false;
@@ -136,7 +135,6 @@ public class RentACat {
 		// If cat exists and is not rented, then the cat
 		// is available to rent
 		return true;
-
     }
 
     /**

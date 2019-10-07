@@ -70,7 +70,15 @@ public class RentACatTest {
 	public void testCatExists() {
 		when(_c1.getId()).thenReturn(1);
 
-		assertTrue(_r.catExits(1));
+		assertTrue(_r.catExists(1));
+	}
+
+	@Test
+	public void testCatAvailable() {
+		when(_c1.getId()).thenReturn(1);
+		when(_c1.getRented()).thenReturn(false);
+
+		assertTrue(_r.catAvailable(1));
 	}
 
 	@Test
